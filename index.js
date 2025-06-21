@@ -1,6 +1,9 @@
 import express from "express"
 import mongoose from "mongoose"
-// import Users from "./model/song.js"
+import User from "./model/user.js"
+// import song from "./model/song.js"
+// import playlist from "./model/playlist.js"
+
 import 'dotenv/config'
 
 
@@ -14,13 +17,40 @@ await mongoose.connect(process.env.MONGO_URL)
 app.use(express.json())
 
 app.get('/', (req, res)=> {
-    res.send('boo')
+    res.send('🌜Moon Tunes 🎵')
 }),
 
+app.post('/users', async(req, res)=> {
+    try {
+        const newUser = new User(req, res);
+        awaitnewUser.save();
+        res.status(201).json(newUser)
+    } catch (error){
+    res.status(400).json({error: error.message});
+    }
+});   
+
 app.get('/users', async (req, res)=> {
-    let Moon = await Users.find()
-    res.send(Moon)
-})
+    let user = await User.find();
+    res.send(user)
+});
+
+app.patch('/users/:username', async(req, res)=> {
+   try {
+     const user= await User.findOneAndUpdate(
+        {username: req.params.username},
+        req.body,
+        {new: true}
+    );
+    res.json(user);
+   } catch {
+    res.status(400).json({error: 'Failed updating'});
+   }
+});
+
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Listening on port http://localhost:${PORT}`);
