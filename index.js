@@ -5,6 +5,7 @@ import User from "./model/user.js"
 // import playlist from "./model/playlist.js"
 
 import 'dotenv/config'
+import user from "./model/user.js"
 
 
 const app = express()
@@ -47,7 +48,10 @@ app.patch('/users/:username', async(req, res)=> {
     res.status(400).json({error: 'Failed updating'});
    }
 });
-
+app.delete('/users/:username', async (req, res)=> {
+    await User.deleteOne({username: req.params.username});
+    res.json({message: 'Deleting user'});
+});
 
 
 
