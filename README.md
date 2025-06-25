@@ -1,5 +1,8 @@
 # SBA-319
 # SBA-319
+ 
+ <!-- you may have to cancel request when testing the DELETE and try the request again. I'm not sure why it does this -->
+
 Get /
 Post /users
 Get /users
