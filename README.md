@@ -5,6 +5,11 @@ Post /users
 Get /users
 Get /users/:id
 Put /users/:id
+Delete /users/:id
+Post /songs
+get /songs
+Put /songs/:id
+Delete /songs/:id
 
 
 
