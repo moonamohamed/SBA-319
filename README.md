@@ -10,6 +10,11 @@ Post /songs
 get /songs
 Put /songs/:id
 Delete /songs/:id
+Post /playlists
+Get /playlists
+Put /playlists/:id
+Delete /playlists/:id
+
 
 
 
