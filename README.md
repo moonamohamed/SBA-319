@@ -2,7 +2,9 @@
 # SBA-319
 Get /
 Post /users
-
+Get /users
+Get /users/:id
+Put /users/:id
 
 
 
